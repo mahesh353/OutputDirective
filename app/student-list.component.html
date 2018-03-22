@@ -1,0 +1,49 @@
+<h4 style="text-align: center">@Output() Directive(To send data from child to parent)</h4>
+<hr>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!--Here we are using selector as directive to call(render) the child component(student-count.component.ts)-->
+    <!--Now using the property binding in selector tag we are passing data to input properties
+        present in child component(student-count.component.ts)
+        ex.[totalStudentsCount]="getTotalStudentsCount()"
+    --> 
+
+    <!--Now see the selector diretive code here we need to raise the event -->
+
+    <student-count [totalStudentsCount]="getTotalStudentsCount()" 
+                   [maleStudentsCount]="getMaleStudentsCount()"
+                   [femaleStudentsCount]="getFemaleStudentsCount()"
+                   (radioButtonSelectionChanged)="radioButtonChangedEventHandler($event)">
+    </student-count>
+    <hr>
+    <div class="container">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--using *ngFor directive to iterate over student list-->
+                <ng-container *ngFor="let student of students">
+                <tr *ngIf="selectedRadioButtonValue=='All' || selectedRadioButtonValue == student.Gender">
+                    <th scope="row">{{student.Id}}</th>
+                    <td>{{student.Name}}</td>
+                    <td>{{student.Address}}</td>
+                    <td>{{student.Gender}}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

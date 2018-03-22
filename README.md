@@ -1,1 +1,1 @@
-# OutputDirective
+# InputDirective

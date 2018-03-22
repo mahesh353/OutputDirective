@@ -1,0 +1,17 @@
+<div class="container">
+    <p style="font-weight: bold;">Select:</p>
+    <form>
+        <label class="radio-inline">
+            <!--In below tag i have just added this event (change)="selectedRadioButtonChanged('All')"  and the i am passing selected radio button value
+            same way i have done for remaining radio buttons
+            -->
+            <input type="radio" name="optradio" value="All" [(ngModel)]="selectedRadioButton" (change)="selectedRadioButtonChanged('All')">All({{totalStudentsCount}})
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="Male" [(ngModel)]="selectedRadioButton" (change)="selectedRadioButtonChanged('Male')">Male({{maleStudentsCount}})
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="Female" [(ngModel)]="selectedRadioButton" (change)="selectedRadioButtonChanged('Female')">Female({{femaleStudentsCount}})
+        </label>
+    </form>
+</div>
